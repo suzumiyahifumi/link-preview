@@ -17,6 +17,12 @@ export default {
   ): Promise<Response> {
     const reqUrl = new URL(request.url);
     const origin = request.headers.get("Origin") || "*";
+    const referer = request.headers.get("Referer");
+    if(referer != undefined){
+      if (reqUrl.hostname === new URL('https://trpgtime.2d6exp.com/').hostname || new URL(referer).hostname === new URL('https://ttrpg.2d6exp.com/').hostname) {
+          return handleError(500, `[Failed by cors]`, origin);;
+      }
+    }
 
     if (request.method === "OPTIONS") {
       // Handle (accept) preflight requests from web browsers
