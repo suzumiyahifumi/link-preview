@@ -184,7 +184,9 @@ async function extractMetadata(query: string): Promise<Metadata> {
     }
   }
 
-  return { title, description, url, image, charset: detectedCharset };
+  let mimetype = res.headers.get('content-type');
+
+  return { title, description, url, image, charset: detectedCharset, mimetype };
 }
 
 function detectCharset(
