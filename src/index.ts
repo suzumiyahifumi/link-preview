@@ -130,6 +130,7 @@ async function extractMetadata(query: string): Promise<Metadata> {
     // When declared as Bot, some sites generously return prerendered metadata for preview (e.g. Twitter)
     "user-agent": `LinkPreviewBot/${version}`,
     "accept-language": "ja-JP",
+    "Origin": `https://ttrpg.2d6exp.com`
   };
   const res = await fetch(query, {
     redirect: "follow",
