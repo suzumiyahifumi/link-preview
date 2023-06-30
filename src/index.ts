@@ -20,7 +20,7 @@ export default {
     const referer = request.headers.get("Referer");
     if(referer){
       if (reqUrl.hostname != new URL('https://trpgtime.2d6exp.com/').hostname && new URL(referer).hostname != new URL('https://ttrpg.2d6exp.com/').hostname) {
-          return handleError(500, `[Failed by cors]`, origin);;
+          return handleError(500, `[Failed by cors] ${reqUrl.hostname}`, origin);
       }
     }
 
